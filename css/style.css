@@ -1,0 +1,417 @@
+/* Font: Helvetica */
+/*  
+  Colors (Naming conventions - http://chir.ag/projects/name-that-color):
+
+  #464f77 - East Bay          - primary color
+  #383f5f - Pickeld Bluewood  - accent secondary color
+  #148fd5 - Curious Blue      - accent primary
+  #050505                     - black
+  #fff                        - white
+  #b3b3b3 - Nobel             - gray
+  #c4c7d3                     - gray-numbers-circles
+  #6b7292                     - gray-circles
+  #a3a7bb                     - gray-list
+  #e7e7e7                     - todo border   
+*/
+
+/* general */
+
+* {
+  box-sizing: border-box;
+}
+
+.col-mar {
+  padding-top: 1px;/* collapsing margins */
+}
+
+.clearfix:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.round-simple,
+.round-double {
+  background-color: #6b7292;
+  color: #c4c7d3;
+  font-size: 14px;
+}
+
+.round-simple {
+  display: inline-block;
+  border-radius: 50%;
+  padding: 2px 6px 1px 6px;  
+}
+
+.round-double {
+  border-radius: 12px;
+  padding: 3px 4px;
+}
+
+/* typography */
+
+body {
+  font-family: 'Helvetica', 'Arial', sans-serif;
+}
+
+.headline-primary {
+  color: #050505;
+  font-size: 21px;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+.headline-secondary {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+/* responsive hamburger menu */
+.hamburger-menu {
+  display: block;
+  position: absolute;
+  top: 22px;
+  left: 32px;
+  cursor: pointer;
+  z-index: 100;
+  transition: left 400ms;
+}
+
+@media screen and (min-width: 769px) {
+  .hamburger-menu {
+    display: none;
+  }
+}
+
+/* checkbox trick */
+
+input[type="checkbox"]{
+  display: none;
+}
+
+input[type="checkbox"]:checked ~ header {
+  margin-left: 0;
+  transition: margin-left 400ms;
+}
+
+input[type="checkbox"]:checked ~ main {
+  margin-left: 336px;
+  transition: margin-left 400ms;
+}
+
+input[type="checkbox"]:checked ~ .hamburger-menu {
+  left: 370px;
+  transition: left 400ms;
+}
+
+
+/* header */
+
+header {
+  width: 336px;
+  float: left;
+  margin-left: -336px;
+  height: 100vh; /*viewport-height units*/ 
+  background-color: #464f77;
+}
+
+@media screen and (min-width: 769px) {
+  header {
+    margin-left: 0;
+  }
+}
+
+/* nav */
+
+nav ul:first-of-type {
+  padding-top: 62px;
+}
+
+nav li {
+  padding-left: 138px;
+  padding-right: 32px;
+}
+
+nav li:hover {
+  background-color: #383f5f;
+  color: #fff;
+  cursor: pointer;
+}
+
+.list-complete {
+  margin-top: 65px;
+}
+
+.list-incomplete li:first-of-type,
+.list-complete li:first-of-type {
+  position: relative;
+  background-color: initial;
+  color: initial;
+  cursor: default;
+}
+
+.list-incomplete h2::before {
+  content: url(../img/list_icon.png);
+  position: absolute;
+  top: -4px;
+  right: 210px;
+}
+
+.list-complete h2::before {
+  content: url(../img/check_box_icon.png);
+  position: absolute;
+  top: -4px;
+  right: 207px;
+}
+
+.list-incomplete span {
+  margin-left: 105px;
+}
+
+.list-incomplete li:first-of-type span {
+  margin-left: 61px;
+}
+
+ul li a {
+  color: #a3a7bb;
+  text-decoration: none;
+  display: inline-block;
+  padding: 12px 0;
+}
+
+/* main */
+main {
+  margin-left: 0;
+  transition: 400ms;
+}
+
+@media screen and (min-width: 769px) {
+  main {
+    margin-left: 336px;
+  }
+}
+
+/* headline */
+
+main .headline-primary {
+  padding: 73px 0 20px 32px;
+  position: relative;
+  margin: 0;
+}
+
+.headline-primary span {
+  display: block;
+  position: absolute;
+  bottom: 23px;
+  left: 116px;
+  font-size: 16px;
+  padding: 2px 4px 1px 6px;;
+}
+
+/* todo list */
+
+.todo-list {
+  margin-left: 20px;
+  margin-right: 100px;
+}
+
+.todo-list li {
+  border-top: 1px solid #efefef;
+  position: relative;
+  padding: 16px 0 16px 38px;
+}
+
+.todo-list li a {
+  padding: 0;
+}
+
+.todo-list li:first-of-type {
+  border-top: none;
+}
+
+.todo-list li:first-of-type a {
+  color: #148fd5;
+}
+
+.todo-list li::before {
+  content: url(../img/check_box_empty.png);
+  position: absolute;
+  top: 19px;
+  left: 12px;
+}
+
+.todo-list li:first-of-type::before {
+  content: url(../img/plus.png);
+}
+
+.todo-list li::after {
+  content: url(../img/trash_bin.png);
+  position: absolute;
+  top: 19px;
+  right: 0;
+}
+
+.todo-list li:hover::after {
+  cursor: pointer;
+}
+.todo-list li:first-of-type::after {
+  content: '';
+}
+
+.todo-list li a {
+  font-size: 16px;
+  color: #050505;
+}
+
+
+/* modal */
+
+.modal fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+  color: #050505;
+  font-size: 16px;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+
+.modal {
+  width: 575px;
+  height: 400px;
+  background-color: #fff;
+  position: absolute;
+  top: 110px;
+  left: 440px;
+}
+
+.modal input,
+.modal textarea,
+.modal label,
+.modal span {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.modal label[for="description"],
+.modal textarea {
+  vertical-align: top;
+}
+
+.modal .block {
+  display: block;
+}
+
+.modal input[type="text"],
+.modal textarea,
+.modal .date {
+  width: 400px;
+}
+
+.modal textarea {
+  height: 140px;
+}
+
+.modal input[type="number"] {
+  width: 115px;
+}
+
+.modal input[type="text"],
+.modal input[type="number"],
+textarea {
+  padding:  10px;
+}
+
+.modal form {
+  padding: 38px 38px 40px 30px;
+}
+
+.modal .block {
+  margin-bottom: 24px;
+}
+
+.modal input[type="text"] {
+  margin-left: 70px;
+}
+
+.modal span {
+  padding: 0 7px;
+}
+
+.modal input[name="day"] {
+  margin-left: 33px;
+}
+
+.modal textarea {
+  margin-left: 20px;
+}
+
+
+.modal .btn {
+  width: 184px;
+  height: 36px;
+  background-color: #148fd5;
+  color: #fff;
+  font-size: 16px;
+  text-transform: capitalize;
+  border: none;
+  border-radius: 5px;
+}
+
+.modal input[type="submit"]:first-of-type {
+  display: inline-block;
+  margin-right: 20px;
+  margin-left: 103px;
+}
+
+.show-modal {
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,.5);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+/* events */
+
+.todo-list li a:hover {
+  color: #148fd5;
+}
+
+.todo-list .disabled a:hover {
+  color: #b3b3b3;
+}
+
+.nav-active {
+  background-color: #383f5f;
+}
+
+.nav-active a {
+  color: #fff;
+}
+
+.round-active {
+  background-color: #148fd5;
+  color: #fff;
+}
+
+.todo-list .disabled a{
+  color: #b3b3b3;
+  text-decoration: line-through;
+}
+
+.todo-list .disabled::before {
+  content: url(../img/check_box_checked.png);
+}

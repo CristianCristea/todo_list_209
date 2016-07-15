@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Todo List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body class="clearfix">
+  
+    <input type="checkbox" id="toggle-menu">
+    <label for="toggle-menu" class="hamburger-menu"><img src="img/menu_icon.png" alt="hamburger menu"></label>
+
+    <header>
+      <nav class="todo-lists">
+        <ul class="list-incomplete">
+          <li><h2 class="headline-secondary">All Todos<span class="round-double round-number">18</span></h2></li>
+          <li class="nav-active"><a href="#">02/16<span class="round-simple round-active">8</span></a></li>
+          <li><a href="#">03/16<span class="round-simple">2</span></a></li>
+          <li><a href="#">04/16<span class="round-simple">1</span></a></li>
+          <li><a href="#">05/16<span class="round-simple">1</span></a></li>
+          <li><a href="#">06/16<span class="round-simple">6</span></a></li>
+        </ul> <!-- ./list-incomplete -->
+
+        <ul class="list-complete">
+          <li><h2 class="headline-secondary">Completed</h2></li>
+          <li><a href="#">02/16</a></li>
+          <li><a href="#">03/16</a></li>
+          <li><a href="#">04/16</a></li>
+          <li><a href="#">05/16</a></li>
+          <li><a href="#">06/16</a></li>
+        </ul> <!-- ./list-incomplete -->      
+      </nav>
+    </header>
+
+    <main>
+      <h1 class="headline-primary">02/16<span class="round-simple round-active">8</span></h1>
+      <div class="todo-list">
+        <ul>
+          <li><a href="#">Add new to do</a></li>
+          <li><a href="#">Item 1</a></li>
+          <li><a href="#">Item 2</a></li>
+          <li class='disabled'><a href="#">Item 3</a></li>
+          <li class='disabled'><a href="#">Item 4</a></li>
+          <li class='disabled'><a href="#">Item 5</a></li>
+          <li><a href="#">Item 6</a></li>
+          <li><a href="#">Item 7</a></li>
+          <li><a href="#">Item 8</a></li>
+        </ul>
+      </div>  <!-- ./todo-list -->
+    </main>
+    <aside class="show-modal">
+      <div class="modal">
+        <form action="#" method="post">
+          <fieldset>
+            <div class="block">
+              <label for="title">Title</label>
+              <input type="text" id="title" name="title" required>
+            </div>
+            
+            <div class="block">
+              <label for="date">Due Date</label>
+              <input type="number" name="day" id="date" placeholder="Day" required max="31">
+              <label>
+              <span>/</span>
+                <input type="number" name="month" id="month" placeholder="Month">
+              </label>
+              <span>/</span>
+              <label>
+                <input type="number" name="year" id="year" required placeholder="Year">
+              </label>
+            </div>
+
+            <div class="block">
+              <label for="description">Description</label>
+              <textarea name="description" id="description" cols="30" rows="10" placeholder="Description"></textarea>
+            </div>
+
+            <input type="submit" class="btn" id="save" formaction="/save" value="Save">
+            <input type="submit" class="btn" id="complete" value="Mark As Complete">
+          </fieldset>
+        </form>
+      </div>  <!-- ./modal -->
+    </aside>
+  </body>
+</html>
